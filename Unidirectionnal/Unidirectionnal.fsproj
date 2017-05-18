@@ -57,11 +57,12 @@
     <Compile Include="AssemblyInfo.fs" />
     <None Include="App.config" />
     <Content Include="packages.config" />
+    <Compile Include="NumericUpDown.fs" />
     <Compile Include="App.fs" />
     <Resource Include="App.xaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="MainWindow.xaml">
+    <Resource Include="NumericUpDown.xaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
