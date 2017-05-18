@@ -20,8 +20,8 @@ type NumericUpDownModel() =
 type NumericUpDownEvents = Up | Down
 
 
-type MainWindow = XAML<"NumericUpDown.xaml">
-type NumericUpDownView(root : MainWindow) = 
+type NumericUpDownWindow = XAML<"NumericUpDown\NumericUpDown.xaml">
+type NumericUpDownView(root : NumericUpDownWindow) = 
     inherit View<NumericUpDownEvents, NumericUpDownModel, Window>(root) 
     override this.EventStreams = [        
         root.upButton.Click |> Observable.map (fun _ -> Up)

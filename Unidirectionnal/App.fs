@@ -14,7 +14,7 @@ open NumericUpDown
 let main argv = 
     let model = NumericUpDownModel.Create()
     let app = App()
-    let view = NumericUpDownView(MainWindow())
+    let view = NumericUpDownView(NumericUpDownWindow())
     let mvc = Mvc(model, view, Controller.Create numericUpDownEventHandler)
     use __ = mvc.Start()
     app.Run(view.Root) 

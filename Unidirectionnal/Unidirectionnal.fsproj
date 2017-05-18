@@ -54,17 +54,17 @@
   </Choose>
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
-    <Compile Include="AssemblyInfo.fs" />
+    <Compile Include="Properties/AssemblyInfo.fs" />
+    <Compile Include="NumericUpDown/NumericUpDown.fs" />
+    <Resource Include="NumericUpDown/NumericUpDown.xaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <None Include="App.config" />
-    <Content Include="packages.config" />
-    <Compile Include="NumericUpDown.fs" />
     <Compile Include="App.fs" />
     <Resource Include="App.xaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="NumericUpDown.xaml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Castle.Core">
