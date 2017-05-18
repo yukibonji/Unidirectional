@@ -45,7 +45,7 @@ type NumericUpDownView(root : NumericUpDownWindow) =
             <@
                 //'coerce' means "use WPF default conversions"
                 root.input.Text <- coerce model.Value
-            @> 
+            @>
 
 
 let numericUpDownEventHandler event (model: NumericUpDownModel) =
