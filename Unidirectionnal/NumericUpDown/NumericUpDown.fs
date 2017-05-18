@@ -17,10 +17,13 @@ type NumericUpDownModel() =
     abstract Value: int with get, set
 
 
-type NumericUpDownEvents = Up | Down
+type NumericUpDownEvents = 
+    | Up 
+    | Down 
+    | Edit of string
 
 
-type NumericUpDownWindow = XAML<"NumericUpDown\NumericUpDown.xaml">
+type NumericUpDownWindow = XAML<"NumericUpDown/NumericUpDown.xaml">
 type NumericUpDownView(root : NumericUpDownWindow) = 
     inherit View<NumericUpDownEvents, NumericUpDownModel, Window>(root) 
     override this.EventStreams = [        
@@ -33,11 +36,11 @@ type NumericUpDownView(root : NumericUpDownWindow) =
             | Key.Down -> Some Down
             | _ ->  None
         )
-
-        root.input.MouseWheel |> Observable.map (fun args -> if args.Delta > 0 then Up else Down)
+        root.input.TextChanged  |> Observable.map (fun args -> Edit root.input.Text)
+        root.input.MouseWheel   |> Observable.map (fun args -> if args.Delta > 0 then Up else Down)
     ]
 
-    override this.SetBindings model =           
+    override this.SetBindings model =
         Binding.OfExpression 
             <@
                 //'coerce' means "use WPF default conversions"
@@ -49,4 +52,9 @@ let numericUpDownEventHandler event (model: NumericUpDownModel) =
     match event with
     | Up -> model.Value <- model.Value + 1
     | Down -> model.Value <- model.Value - 1
+    | Edit str -> 
+        match System.Int32.TryParse str with
+        | true, i -> model.Value <- i
+        | false, _ -> model.Value <-model.Value
+                
 

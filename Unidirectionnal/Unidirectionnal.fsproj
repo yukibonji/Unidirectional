@@ -59,6 +59,10 @@
     <Resource Include="NumericUpDown/NumericUpDown.xaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Compile Include="MetaModels/MetaModels.fs" />
+    <Resource Include="MetaModels/MetaModels.xaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <None Include="App.config" />
     <Compile Include="App.fs" />
     <Resource Include="App.xaml">
