@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26510.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Unidirectional", "Unidirectional\Unidirectional.fsproj", "{45D1D4E6-A859-4928-BB6D-C11C03AEFE4F}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Controls", "Controls\Controls.fsproj", "{1C40482A-B20C-4B6E-98F0-4FFAB4EFA4A0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{45D1D4E6-A859-4928-BB6D-C11C03AEFE4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45D1D4E6-A859-4928-BB6D-C11C03AEFE4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45D1D4E6-A859-4928-BB6D-C11C03AEFE4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C40482A-B20C-4B6E-98F0-4FFAB4EFA4A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C40482A-B20C-4B6E-98F0-4FFAB4EFA4A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C40482A-B20C-4B6E-98F0-4FFAB4EFA4A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C40482A-B20C-4B6E-98F0-4FFAB4EFA4A0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

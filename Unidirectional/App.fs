@@ -7,16 +7,20 @@ open FSharp.Desktop.UI
 
 type App = XAML<"App.xaml">
 
-open NumericUpDown
+open Controls.NumericUpDown
+open NumericUpDownWindow
 
 [<STAThread>]
 [<EntryPoint>]
 let main argv = 
-    let model = NumericUpDownModel.Create()
-    let app = App()
-    let view = NumericUpDownView(NumericUpDownWindow())
-    let mvc = Mvc(model, view, Controller.Create numericUpDownEventHandler)
+    
+    let model = NumericUpDownListModel.Create()
+    let window = NumericUpDownWindow()
+    let view = NumericUpDownWindowView(window)
+    let controller = NumericUpDownWindowController()
+    let controlController = Controller.Create NumericUpDownControlController.eventHandler
+    let mvc = Mvc(model, view, controller).Compose(controlController, NumericUpDownControlView(window.UpDown), fun m -> m.List |> List.head)
     use __ = mvc.Start()
-    app.Run(view.Root) 
+    App().Run(view.Root)
 
 

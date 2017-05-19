@@ -1,8 +1,9 @@
-﻿module NumericUpDown
+﻿namespace Controls.NumericUpDown
 
 open System.Windows
 open System.Windows.Input
 open System.Windows.Data
+open System.Windows.Controls
 
 open FsXaml
 open FSharp.Desktop.UI
@@ -23,9 +24,11 @@ type NumericUpDownEvents =
     | Edit of string
 
 
-type NumericUpDownWindow = XAML<"NumericUpDown/NumericUpDown.xaml">
-type NumericUpDownView(root : NumericUpDownWindow) = 
-    inherit View<NumericUpDownEvents, NumericUpDownModel, Window>(root) 
+type NumericUpDownControl = XAML<"NumericUpDownControl.xaml">
+
+
+type NumericUpDownControlView(root : NumericUpDownControl) = 
+    inherit PartialView<NumericUpDownEvents, NumericUpDownModel, Control>(root) 
     override this.EventStreams = [        
         root.upButton.Click |> Observable.map (fun _ -> Up)
         root.downButton.Click |> Observable.map (fun _ -> Down)
@@ -47,14 +50,14 @@ type NumericUpDownView(root : NumericUpDownWindow) =
                 root.input.Text <- coerce model.Value
             @>
 
-
-let numericUpDownEventHandler event (model: NumericUpDownModel) =
-    match event with
-    | Up -> model.Value <- model.Value + 1
-    | Down -> model.Value <- model.Value - 1
-    | Edit str -> 
-        match System.Int32.TryParse str with
-        | true, i -> model.Value <- i
-        | false, _ -> model.Value <-model.Value
+module NumericUpDownControlController =
+    let eventHandler (event:NumericUpDownEvents) (model: NumericUpDownModel) =
+        match event with
+        | Up -> model.Value <- model.Value + 1
+        | Down -> model.Value <- model.Value - 1
+        | Edit str -> 
+            match System.Int32.TryParse str with
+            | true, i -> model.Value <- i
+            | false, _ -> model.Value <-model.Value
                 
 
