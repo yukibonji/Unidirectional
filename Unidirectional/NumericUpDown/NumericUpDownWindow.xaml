@@ -3,6 +3,21 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:uc="clr-namespace:Controls.NumericUpDown;assembly=Controls"
     Title="Up/Down" Width="250" Height="80" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <!-- Define some global default styles -->
+        <Style TargetType="uc:NumericUpDownControl">
+            <Style.Resources>
+                <Style TargetType="Button" >
+                    <Setter Property="Width" Value="50" />
+                </Style>
+                <Style TargetType="TextBox">
+                    <Setter Property="TextAlignment" Value="Center" />
+                    <Setter Property="VerticalContentAlignment" Value="Center" />
+                    <Setter Property="FontSize" Value="20" />
+                </Style>
+            </Style.Resources>
+        </Style>
+    </Window.Resources>
     <Grid>
         <uc:NumericUpDownControl x:Name="UpDown"/>
     </Grid>
