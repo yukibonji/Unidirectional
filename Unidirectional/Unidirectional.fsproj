@@ -7,12 +7,12 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>45d1d4e6-a859-4928-bb6d-c11c03aefe4f</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Unidirectionnal</RootNamespace>
-    <AssemblyName>Unidirectionnal</AssemblyName>
+    <RootNamespace>Unidirectional</RootNamespace>
+    <AssemblyName>Unidirectional</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFSharpCoreVersion>4.4.1.0</TargetFSharpCoreVersion>
-    <Name>Unidirectionnal</Name>
+    <Name>Unidirectional</Name>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>

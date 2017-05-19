@@ -1,4 +1,4 @@
-﻿namespace Unidirectionnal.AssemblyInfo
+﻿namespace Unidirectional.AssemblyInfo
 
 open System.Reflection
 open System.Runtime.CompilerServices
@@ -7,11 +7,11 @@ open System.Runtime.InteropServices
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[<assembly: AssemblyTitle("Unidirectionnal")>]
+[<assembly: AssemblyTitle("Unidirectional")>]
 [<assembly: AssemblyDescription("")>]
 [<assembly: AssemblyConfiguration("")>]
 [<assembly: AssemblyCompany("Rollomatic SA")>]
-[<assembly: AssemblyProduct("Unidirectionnal")>]
+[<assembly: AssemblyProduct("Unidirectional")>]
 [<assembly: AssemblyCopyright("Copyright © Rollomatic SA 2017")>]
 [<assembly: AssemblyTrademark("")>]
 [<assembly: AssemblyCulture("")>]
