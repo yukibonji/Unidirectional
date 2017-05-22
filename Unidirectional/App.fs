@@ -19,7 +19,10 @@ let main argv =
     let view = NumericUpDownWindowView(window)
     let controller = NumericUpDownWindowController()
     let controlController = Controller.Create NumericUpDownControlController.eventHandler
-    let mvc = Mvc(model, view, controller).Compose(controlController, NumericUpDownControlView(window.UpDown), fun m -> m.List |> List.head)
+    let 
+        mvc = Mvc(model, view, controller)  
+            <+> (controlController, NumericUpDownControlView(window.UpDown1), fun (m:NumericUpDownListModel) -> m.List.[0])
+            <+> (controlController, NumericUpDownControlView(window.UpDown2), fun (m:NumericUpDownListModel) -> m.List.[1])
     use __ = mvc.Start()
     App().Run(view.Root)
 

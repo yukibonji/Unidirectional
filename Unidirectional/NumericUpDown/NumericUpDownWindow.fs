@@ -18,8 +18,8 @@ type NumericUpDownListModel() =
 
 
 type NumericUpDownListEvents = 
-    | Add
-    | Remove
+    | First
+    | Second
 
 
 type NumericUpDownWindow = XAML<"NumericUpDown/NumericUpDownWindow.xaml">
@@ -37,8 +37,8 @@ type NumericUpDownWindowController() =
     inherit Controller<NumericUpDownListEvents, NumericUpDownListModel>()
 
     override this.InitModel model =
-        model.List <- ([NumericUpDownModel.Create()] |> Seq.toList)
+        model.List <- ([NumericUpDownModel.Create(); NumericUpDownModel.Create()] |> Seq.toList)
 
     override this.Dispatcher = function
-        | Add -> Sync (fun m -> ())
-        | Remove -> Sync (fun m -> ())
+        | First -> Sync (fun m -> ())
+        | Second -> Sync (fun m -> ())
