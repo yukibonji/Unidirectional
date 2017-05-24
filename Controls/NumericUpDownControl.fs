@@ -10,12 +10,11 @@ open FSharp.Desktop.UI
 
 
 
-
 [<AbstractClass>]
 type NumericUpDownModel() = 
     inherit Model()
 
-    abstract Value: int with get, set
+    abstract Value: double with get, set
 
 
 type NumericUpDownEvents = 
@@ -46,18 +45,18 @@ type NumericUpDownControlView(root : NumericUpDownControl) =
     override this.SetBindings model =
         Binding.OfExpression 
             <@
-                //'coerce' means "use WPF default conversions"
-                root.input.Text <- coerce model.Value |> BindingOptions.OneWay
+                root.input.Text <- System.String.Format("{0:0.0}", model.Value) |> BindingOptions.OneWay
+                //root.input.Text <- (coerce model.Value) |> BindingOptions.OneWay
             @>
 
 module NumericUpDownControlController =
     let eventHandler (event:NumericUpDownEvents) (model: NumericUpDownModel) =
         match event with
-        | Up -> model.Value <- model.Value + 1
-        | Down -> model.Value <- model.Value - 1
+        | Up -> model.Value <- model.Value + 1.0
+        | Down -> model.Value <- model.Value - 1.0
         | Edit str -> 
-            match System.Int32.TryParse str with
-            | true, i -> model.Value <- i
+            match System.Double.TryParse str with
+            | true, d -> model.Value <- d
             | false, _ -> model.Value <-model.Value
                 
 
