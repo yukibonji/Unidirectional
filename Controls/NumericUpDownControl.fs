@@ -47,7 +47,7 @@ type NumericUpDownControlView(root : NumericUpDownControl) =
         Binding.OfExpression 
             <@
                 //'coerce' means "use WPF default conversions"
-                root.input.Text <- coerce model.Value
+                root.input.Text <- coerce model.Value |> BindingOptions.OneWay
             @>
 
 module NumericUpDownControlController =

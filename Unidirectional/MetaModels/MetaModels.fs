@@ -12,6 +12,6 @@ type ParameterValue =
     | Function      of Function seq
     | Socket        of Socket
 and Parameter       = { Name: string; Value: ParameterValue }
-and Configuration   = Group seq
 and Group           = string * Parameter seq
+and Configuration   = Group seq
 and Socket          = { Choices : Map<string, Configuration>; Selection : string }
