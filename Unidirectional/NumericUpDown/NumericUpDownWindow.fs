@@ -8,6 +8,7 @@ open System.Windows
 open System.Windows.Input
 open System.Windows.Data
 
+
 open Controls.NumericUpDown
 
 [<AbstractClass>]
@@ -18,27 +19,44 @@ type NumericUpDownListModel() =
 
 
 type NumericUpDownListEvents = 
-    | First
-    | Second
+    | Add
+    | Remove
 
 
 type NumericUpDownWindow = XAML<"NumericUpDown/NumericUpDownWindow.xaml">
 type NumericUpDownWindowView(root : NumericUpDownWindow) = 
     inherit View<NumericUpDownListEvents, NumericUpDownListModel, Window>(root)
-    override this.EventStreams = [        
+    override this.EventStreams = [
+        root.AddButton.Click |> Observable.map (fun _ -> Add)
+        root.RemoveButton.Click |> Observable.map (fun _ -> Remove)
         ]
 
     override this.SetBindings model =
-        ()
+        Binding.OfExpression 
+            <@
+                root.Items.ItemsSource <- model.List
+            @>
 
 
 
 type NumericUpDownWindowController() =
     inherit Controller<NumericUpDownListEvents, NumericUpDownListModel>()
 
+    let rec remove i l =
+        match i, l with
+        | 0, x::xs -> xs
+        | i, x::xs -> x::remove (i - 1) xs
+        | i, [] -> []
+
+    let add (m:NumericUpDownListModel) =
+        m.List <- (List.append m.List [NumericUpDownModel.Create()])
+
+    let remove (m:NumericUpDownListModel) =
+        m.List <- remove (List.length m.List - 1) m.List
+
     override this.InitModel model =
-        model.List <- ([NumericUpDownModel.Create(); NumericUpDownModel.Create()] |> Seq.toList)
+        model.List <- []
 
     override this.Dispatcher = function
-        | First -> Sync (fun m -> ())
-        | Second -> Sync (fun m -> ())
+    | Add -> Sync (fun m -> add m)
+    | Remove -> Sync (fun m -> remove m)

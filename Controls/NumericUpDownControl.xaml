@@ -10,9 +10,9 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
-        <Button x:Name="upButton" Grid.Column="1">^</Button>
-        <Button x:Name="downButton" Grid.Column="1" Grid.Row="1">v</Button>
-        <TextBox x:Name="input" Grid.RowSpan="2" />
+        <Button x:Name="UpButton" Grid.Column="1">^</Button>
+        <Button x:Name="DownButton" Grid.Column="1" Grid.Row="1">v</Button>
+        <TextBox x:Name="Input" Grid.RowSpan="2" />
         <!--If you Bind from XAML, Binding.OfExpression in NumericUpDownView::SetBindings is not needed-->
         <!--<TextBox x:Name="input" Grid.RowSpan="2" Text="{Binding Value}" /> -->
     </Grid>

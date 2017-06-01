@@ -20,10 +20,29 @@
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <uc:NumericUpDownControl x:Name="UpDown1" Grid.Row="0"/>
-        <uc:NumericUpDownControl x:Name="UpDown2" Grid.Row="1"/>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="RemoveButton" Grid.Row="0" Grid.Column="0">-</Button>
+            <Button x:Name="AddButton" Grid.Row="0" Grid.Column="1">+</Button>
+        </Grid>
+
+        <ListView x:Name="Items" Grid.Row="1" Grid.RowSpan="5">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <uc:NumericUpDownControl/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Window>
